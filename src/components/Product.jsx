@@ -21,6 +21,9 @@ function Product({ title, description, img, price, category, className }) {
         <p>Precio: ${price}</p>
         <p>Categoría: {category}</p>
       </div>
+      <div className="d-flex">
+        
+      </div>
     </div>
   );
 }

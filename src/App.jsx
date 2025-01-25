@@ -1,15 +1,15 @@
-
-import Home from './pages/Home'
-import "./styles/styles.css"
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import "./styles/styles.css";
 
 function App() {
-
   return (
     <>
-      <Home></Home>
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
