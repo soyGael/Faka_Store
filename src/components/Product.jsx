@@ -16,11 +16,11 @@ function Product({ id, title, description, img, price, category, className }) {
   };
 
   const addToFavorite = () => {
-    const favoriteItems =
-      JSON.parse(localStorage.getItem("favoriteItems")) || [];
-      const newItem = { title, price, img };
-      localStorage.setItem('favoriteItem', JSON.stringify([...favoriteItems, newItem]))
+    const favoriteItems = JSON.parse(localStorage.getItem("favoriteItems")) || [];
+    const newItem = { id, title, price, img };
+    localStorage.setItem('favoriteItems', JSON.stringify([...favoriteItems, newItem]));
   };
+  
 
   return (
     <div className={className}>

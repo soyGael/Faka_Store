@@ -4,7 +4,7 @@ import Product from "../components/Product";
 
 function Home() {
   const { data, loading, error } = useFetch(
-    "https://fakestoreapi.com/products?limit=5"
+    "https://fakestoreapi.com/products?limit=10"
   );
 
   if (loading)

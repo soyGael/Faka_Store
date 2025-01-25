@@ -25,13 +25,21 @@ function Modal({
               <i className="bi bi-x-square-fill"></i>
             </BotonCerrar>
             {children}
-            {mostrarBarra && 
+            {mostrarBarra && (
               <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button className="btn btn-outline-dark me-md-2" type="button">
+                <button
+                  className="btn btn-outline-dark me-md-2"
+                  type="button"
+                  onClick={() => {
+                    cambiarEstado(false);
+                    alert("No te alcanzó xd lol");
+                    cl
+                  }}
+                >
                   Comprar
                 </button>
               </div>
-            }
+            )}
           </ContenedorModal>
         </Over>
       )}

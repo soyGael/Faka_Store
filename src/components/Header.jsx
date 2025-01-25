@@ -13,9 +13,9 @@ function Header() {
       const storageCartItems =
         JSON.parse(localStorage.getItem("cartItems")) || [];
       const storageFavItems =
-        JSON.parse(localStorage.getItem("favoriteItem")) || [];
-      setCartItems(storageCartItems);
+        JSON.parse(localStorage.getItem("favoriteItems")) || [];
       setFavoriteItems(storageFavItems);
+      setCartItems(storageCartItems);
     }, []);
   }
 
@@ -28,6 +28,22 @@ function Header() {
     }
     return acc;
   }, []);
+
+  const groupedFavoriteItems = favoriteItems.reduce((acc, item) => {
+    const existingItem = acc.find((i) => i.id === item.id);
+    if (existingItem) {
+      existingItem.quantity += 1;
+    } else {
+      acc.push({ ...item, quantity: 1 });
+    }
+    return acc;
+  }, []);
+
+  const clearCart = () => {
+    localStorage.removeItem('cartItems');
+    setCartItems([]);
+  };
+  
 
   return (
     <>
@@ -73,14 +89,15 @@ function Header() {
                   <th>Producto</th>
                   <th>Price</th>
                   <th>Cantidad</th>
-                  <th>Acción</th>
                 </tr>
               </thead>
               <tbody>
                 {groupedCartItems.map((item, index) => (
                   <tr key={index}>
-                    <td><img className="img-table" src ={item.img}/></td>
-                    <td>{item.price * item.quantity}</td>
+                    <td>
+                      <img className="img-table" src={item.img} />
+                    </td>
+                    <td>${item.price * item.quantity}</td>
                     <td> {item.quantity}</td>
                   </tr>
                 ))}
@@ -98,7 +115,30 @@ function Header() {
         cambiarEstado={cambiarEstadoFavoritos}
         mostrarBarra={false}
       >
-        <Contenido></Contenido>
+        <Contenido>
+          {favoriteItems.length > 0 ? (
+            <table className="table table-hover align-middle">
+              <thead>
+                <tr>
+                  <th>Producto</th>
+                  <th>Price</th>
+                </tr>
+              </thead>
+              <tbody>
+              {groupedFavoriteItems.map((item, index) => (
+                  <tr key={index}>
+                    <td>
+                      <img className="img-table" src={item.img} />
+                    </td>
+                    <td>${item.price}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ) : (
+            <p>Sin favoritos</p>
+          )}
+        </Contenido>
       </Modal>
     </>
   );
@@ -141,9 +181,8 @@ const Contenido = styled.div`
     font-size: 12px;
   }
 
-td{
-  margin: 10px;
-  padding: 0;
-}
-
+  td {
+    margin: 10px;
+    padding: 0;
+  }
 `;
