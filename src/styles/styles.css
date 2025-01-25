@@ -1,0 +1,28 @@
+.full-height {
+  height: 80dvh;
+}
+
+.d-grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.w-img-50 {
+  height: 150px;
+}
+
+.h1-title {
+  font-size: 1.5rem;
+}
+
+.d-flex-card {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container-img{
+    height: 180px;
+    align-items: center;
+}
