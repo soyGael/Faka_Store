@@ -1,11 +1,26 @@
 import PropTypes from "prop-types";
-function Product({ title, description, img, price, category, className }) {
+function Product({ id, title, description, img, price, category, className }) {
+
   const maxLength = 40;
   const cutDescription =
     description.length > maxLength
       ? description.substring(0, maxLength) + "..."
       : description;
   const cutTitle = title.length > 20 ? title.substring(0, 20) + "..." : title;
+
+  const addToCart = () => {
+    const cartItem = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const newItem = { id, title, price, img };
+    localStorage.setItem("cartItems", JSON.stringify([...cartItem, newItem]));
+    console.log("Guardado exitoso");
+  };
+
+  const addToFavorite = () => {
+    const favoriteItems =
+      JSON.parse(localStorage.getItem("favoriteItems")) || [];
+      const newItem = { title, price, img };
+      localStorage.setItem('favoriteItem', JSON.stringify([...favoriteItems, newItem]))
+  };
 
   return (
     <div className={className}>
@@ -15,23 +30,28 @@ function Product({ title, description, img, price, category, className }) {
       <div className="">
         <h2 className="h1-title">{cutTitle}</h2>
         <p>{cutDescription}</p>
-        <p><span>Precio:</span> ${price}</p>
-        <p><span>Categoría:</span> {category}</p>
+        <p>
+          <span>Precio:</span> ${price}
+        </p>
+        <p>
+          <span>Categoría:</span> {category}
+        </p>
       </div>
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-          <button className="btn btn-outline-dark me-md-2" type="button">
+        <button className="btn btn-outline-dark me-md-2" type="button" onClick={addToCart}>
           <i className="mx-3 bi bi-cart-fill"></i>
-          </button>
+        </button>
 
-          <button className="btn btn-outline-danger" type="button">
+        <button className="btn btn-outline-danger" type="button" onClick={addToFavorite}>
           <i className="mx-3 bi bi-bookmark-heart-fill"></i>
-          </button>
+        </button>
       </div>
     </div>
   );
 }
 
 Product.propTypes = {
+  id: PropTypes.instanceOf.isRequired,
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,

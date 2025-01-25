@@ -26,7 +26,7 @@ function Home() {
   return (
     <>
       <Header></Header>
-      
+
       <main>
         <section className="container d-grid-container">
           {data.map((p) => {
@@ -34,6 +34,7 @@ function Home() {
             return (
               <div key={id} className="card p-3">
                 <Product
+                  id={id}
                   title={title}
                   description={description}
                   price={price}
