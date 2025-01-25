@@ -9,9 +9,6 @@ function Header() {
         </h1>
         <div className="w-50 d-flex justify-content-end align-items-center">
           <Link to="/">
-            <i className="mx-3 bi bi-house-door-fill text-light"></i>
-          </Link>
-          <Link to="/">
             <i className="mx-3 bi bi-cart-fill text-light"></i>
           </Link>
           <Link to="/">
