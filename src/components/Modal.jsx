@@ -33,7 +33,6 @@ function Modal({
                   onClick={() => {
                     cambiarEstado(false);
                     alert("No te alcanzó xd lol");
-                    cl
                   }}
                 >
                   Comprar

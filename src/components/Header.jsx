@@ -38,11 +38,6 @@ function Header() {
     }
     return acc;
   }, []);
-
-  const clearCart = () => {
-    localStorage.removeItem('cartItems');
-    setCartItems([]);
-  };
   
 
   return (
