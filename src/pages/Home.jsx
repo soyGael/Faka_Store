@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import Product from "../components/Product";
 
 function Home() {
-  const {data, loading, error } = useFetch(
+  const { data, loading, error } = useFetch(
     "https://fakestoreapi.com/products?limit=5"
   );
 
@@ -25,7 +25,8 @@ function Home() {
 
   return (
     <>
-        <Header></Header>
+      <Header></Header>
+      
       <main>
         <section className="container d-grid-container">
           {data.map((p) => {

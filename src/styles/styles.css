@@ -30,3 +30,9 @@ span{
     height: 180px;
     align-items: center;
 }
+
+.modal-cart{
+  width: 25%;
+  text-align: center;
+  
+}
