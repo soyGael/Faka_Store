@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 function Product({ title, description, img, price, category, className }) {
   const maxLength = 40;
@@ -20,16 +19,13 @@ function Product({ title, description, img, price, category, className }) {
         <p><span>Categoría:</span> {category}</p>
       </div>
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/">
           <button className="btn btn-outline-dark me-md-2" type="button">
           <i className="mx-3 bi bi-cart-fill"></i>
           </button>
-        </Link>
-        <Link to="/">
+
           <button className="btn btn-outline-danger" type="button">
           <i className="mx-3 bi bi-bookmark-heart-fill"></i>
           </button>
-        </Link>
       </div>
     </div>
   );

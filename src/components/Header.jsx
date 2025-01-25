@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Modal from "./Modal.jsx";
 
 function Header() {
   const [estadoCarrito, cambiarEstadoCarrito] = useState(false);
+  const [estadoFavoritos, cambiarEstadoFavoritos] = useState(false);
   return (
     <>
       <header className="mb-4 p-3 bg-black">
@@ -13,13 +13,18 @@ function Header() {
             Faka<i className="bi bi-arrow-through-heart-fill"></i>Shop
           </h1>
           <div className="w-50 d-flex justify-content-end align-items-center">
-            <button className="btn bg-transparent border-0" onClick={() => cambiarEstadoCarrito(!estadoCarrito)}>
+            <button className="btn bg-transparent border-0" onClick={() =>{ cambiarEstadoCarrito(!estadoCarrito) 
+            cambiarEstadoFavoritos(false) }}>
               <i className="mx-3 bi bi-cart-fill text-light"></i>
             </button>
 
-            <Link to="/">
+            <button className="btn bg-transparent border-0" onClick={() => {
+              cambiarEstadoFavoritos(!estadoFavoritos) 
+              cambiarEstadoCarrito(false)
+            }}>
               <i className="mx-3 bi bi-bookmark-heart-fill text-danger"></i>
-            </Link>
+            </button>
+            
           </div>
         </div>
       </header>
@@ -28,6 +33,15 @@ function Header() {
         title="Carrito"
         estado={estadoCarrito}
         cambiarEstado={cambiarEstadoCarrito}
+      >
+        <Contenido></Contenido>
+      </Modal>
+      
+      <Modal
+        title="Favoritos"
+        estado={estadoFavoritos}
+        cambiarEstado={cambiarEstadoFavoritos}
+        mostrarBarra={false}
       >
         <Contenido></Contenido>
       </Modal>

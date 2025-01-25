@@ -6,13 +6,13 @@ function Modal({
   title = "Sin título",
   estado,
   cambiarEstado,
-  mostrarBarra = "true",
+  mostrarBarra = true,
   mostrarOver = false,
 }) {
   return (
     <>
       {estado && (
-        <Over mostrarOver = {mostrarOver}>
+        <Over mostrarOver={mostrarOver}>
           <ContenedorModal>
             <Encabezado>
               <h3>{title}</h3>
@@ -25,7 +25,13 @@ function Modal({
               <i className="bi bi-x-square-fill"></i>
             </BotonCerrar>
             {children}
-            {mostrarBarra && <p>Hola mundo</p>}
+            {mostrarBarra && 
+              <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                <button className="btn btn-outline-dark me-md-2" type="button">
+                  Comprar
+                </button>
+              </div>
+            }
           </ContenedorModal>
         </Over>
       )}
@@ -45,12 +51,11 @@ Modal.propTypes = {
 export default Modal;
 
 const Over = styled.div`
-  position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
-  background: ${props => props.mostrarOver ? ' rgba(0,0,0,0.5)'  : 'none'};
+  background: ${(props) => (props.mostrarOver ? " rgba(0,0,0,0.5)" : "none")};
   z-index: 1;
 `;
 
