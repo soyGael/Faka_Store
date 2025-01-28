@@ -25,6 +25,7 @@ function Modal({
               <i className="bi bi-x-square-fill"></i>
             </BotonCerrar>
             {children}
+
             {mostrarBarra && (
               <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button

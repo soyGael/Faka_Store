@@ -1,4 +1,6 @@
 import PropTypes from "prop-types";
+import { preload } from "react-dom";
+
 function Product({ id, title, description, img, price, category, className }) {
 
   const maxLength = 40;
@@ -21,7 +23,10 @@ function Product({ id, title, description, img, price, category, className }) {
     localStorage.setItem('favoriteItems', JSON.stringify([...favoriteItems, newItem]));
   };
   
-
+  preload (img, {
+    as: 'image',
+    priority: 'hight'
+  })
   return (
     <div className={className}>
       <div className="d-flex justify-content-center container-img">
@@ -47,6 +52,7 @@ function Product({ id, title, description, img, price, category, className }) {
         </button>
       </div>
     </div>
+  
   );
 }
 
